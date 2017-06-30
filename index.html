@@ -10,24 +10,90 @@
 </head>
 <body>
     <div id="app">
-        <input type="text" v-on:input="changeTitle">    
+        <input type="text" v-on:input="changeTitle">
+        <button v-on:click="increase(2, $event)">click me</button>
+        <button v-on:click="count++">click me 2</button>
+        <h1 v-once>{{ title }}</h1>  
         <p>{{ title }}</p>
         <p>{{ sayHello() }}</p>
         <p><a v-bind:href="link">Google</a></p>
+        <p>{{ count }}</p>
+        <p>{{ count * 2 > 10 ? 'เกิน 10 แล้ว' : 'ยังน้อยกว่า 10' }}</p>
+        <p v-on:mousemove="updateCoordinates">
+            พิกัด : {{ x }} , {{ y }} 
+            - <span v-on:mousemove="dummy">DEAD SPOT</span>
+            - <span v-on:mousemove.stop="">DEAD SPOT 2</span>
+        </p>
+        <input type="text" v-on:keyup.enter.space="alertMe"><br/>
+        <input type="text" v-model="name">
+        <p>{{ name }}</p>
+        <br>
+        <button v-on:click="count++">Increase</button>
+        <button v-on:click="count--">Decrease</button>
+        <button v-on:click="count2++">Increase 2</button>
+        <p>Count : {{ count }} | {{ count2 }}</p>
+        <p>Result : {{ result() }} | {{ output }}</p>
+        <br>
+        <button @click="changeLink">Change Link</button>
+        <a :href="link">Link</a>
     </div>
     <script>
     new Vue({
         el : '#app',
         data : {
             title : 'Hello World!',
-            link : "http://www.google.com"
+            link : "http://www.google.com",
+            count : 0,
+            x : 0,
+            y : 0,
+            name : 'Max',
+            count2 : 0,
+            link : 'http://www.google.com'
+        },
+        computed : {
+            output : function(){
+                console.log('compute');
+                return this.count > 5 ? 'มากกว่า 5' : 'ไม่มากกว่า 5';
+            }
+        },
+        watch : {
+            count : function(value){
+                var vm = this;                
+                setTimeout(function(){
+                    vm.count = 0;
+                },2000);
+            }
         },
         methods : {
             changeTitle : function(e){
                 this.title = e.target.value;
+                this.increase();
             },
             sayHello : function(){
                 return this.title;
+            },
+            increase : function(){                
+                this.count++;
+            },
+            increase : function(step, e){
+                this.count += step;
+            },
+            updateCoordinates : function(e){
+                this.x = e.clientX;
+                this.y = e.clientY;
+            },
+            dummy : function(e){
+                event.stopPropagation();
+            },
+            alertMe : function(){
+                alert("Alert!");
+            },
+            result : function(){
+                console.log('method');
+                return this.count > 5 ? 'มากกว่า 5' : 'ไม่มากกว่า 5';
+            },
+            changeLink : function(){
+                this.link = 'http://apple.com';
             }
         }
     });
