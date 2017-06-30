@@ -104,3 +104,37 @@ alertMe : function(){
 <p>{{ name }}</p>
 ...
 ```
+#Use computed property
+The functions in computed property not refresh went DOM refresh.
+```
+...
+<button v-on:click="count++">Increase</button>
+<button v-on:click="count--">Decrease</button>
+<button v-on:click="count2++">Increase 2</button>
+<p>Count : {{ count }} | {{ count2 }}</p>
+<p>Result : {{ result() }} | {{ output }}</p>
+...
+Javascript
+...
+new Vue({
+el : '#app',
+data : {
+    .....
+    count : 0,    
+    count2 : 0
+},
+computed : {
+    output : function(){
+        console.log('compute');
+        return this.count > 5 ? 'มากกว่า 5' : 'ไม่มากกว่า 5';
+    }
+},
+methods : {    
+    result : function(){
+        console.log('method');
+        return this.count > 5 ? 'มากกว่า 5' : 'ไม่มากกว่า 5';
+    }            
+}
+});
+...
+```
