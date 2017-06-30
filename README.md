@@ -138,3 +138,30 @@ methods : {
 });
 ...
 ```
+#Use watch propery
+```
+...
+new Vue({
+    el : '#app',
+    data : {
+        .....
+        count : 0,    
+        .......
+    },
+    computed : {
+        .....
+    },
+    watch : {
+        count : function(value){
+            var vm = this;                
+            setTimeout(function(){
+                vm.count = 0;
+            },2000);
+        }
+    },
+    methods : {    
+        ....          
+    }
+});
+...
+```
