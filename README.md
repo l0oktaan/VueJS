@@ -80,3 +80,13 @@ dummy : function(e){
 }
 ...
 ```
+#Keyboard Event
+```
+...
+<input type="text" v-on:keyup.enter.space="alertMe">
+...
+alertMe : function(){
+    alert("Alert!");
+}
+...
+```
