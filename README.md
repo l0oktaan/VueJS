@@ -46,3 +46,13 @@ increase : function(){
     this.count++;
 }
 ```
+```
+...
+<p v-on:mousemove="updateCoordinates">พิกัด : {{ x }} , {{ y }}</p>
+...
+updateCoordinates : function(e){
+this.x = e.clientX;
+this.y = e.clientY;
+}
+...
+```
