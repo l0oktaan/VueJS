@@ -66,3 +66,17 @@ increase : function(step, e){
 }
 ...
 ```
+#Event Modify
+```
+...
+<p v-on:mousemove="updateCoordinates">
+    พิกัด : {{ x }} , {{ y }} 
+    - <span v-on:mousemove="dummy">DEAD SPOT</span>
+    - <span v-on:mousemove.stop="">DEAD SPOT 2</span>
+</p>
+...
+dummy : function(e){
+    event.stopPropagation();
+}
+...
+```
