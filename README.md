@@ -165,3 +165,11 @@ new Vue({
 });
 ...
 ```
+#Shorthand
+```
+<button @click="changeLink">Change Link</button>
+<a :href="link">Link</a>
+
+```
+- v-on:click => @click
+- v-bind:href => :href
