@@ -97,3 +97,10 @@ alertMe : function(){
 <p>{{ count * 2 > 10 ? 'เกิน 10 แล้ว' : 'ยังน้อยกว่า 10' }}</p>
 ...
 ```
+#Two way data bind
+```
+...
+<input type="text" v-model="name">
+<p>{{ name }}</p>
+...
+```
