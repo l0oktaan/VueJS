@@ -38,3 +38,11 @@ mylink = "<a href='http://www.google.com'>Google</a>"
 Output
 <a href='http://www.google.com'>Google</a>
 
+#Listing to Event
+```
+<button v-on:click="increase">click me</button>
+...
+increase : function(){
+    this.count++;
+}
+```
