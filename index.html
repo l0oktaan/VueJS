@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue"></script>
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-on:input="changeTitle">    
+        <p>{{ title }}</p>
+        <p>{{ sayHello() }}</p>
+        <p><a v-bind:href="link">Google</a></p>
+    </div>
+    <script>
+    new Vue({
+        el : '#app',
+        data : {
+            title : 'Hello World!',
+            link : "http://www.google.com"
+        },
+        methods : {
+            changeTitle : function(e){
+                this.title = e.target.value;
+            },
+            sayHello : function(){
+                return this.title;
+            }
+        }
+    });
+    </script>
+</body>
+</html>
