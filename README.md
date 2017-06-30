@@ -90,3 +90,10 @@ alertMe : function(){
 }
 ...
 ```
+#Write javascrip code in template
+```
+...
+<button v-on:click="count++">click me 2</button>
+<p>{{ count * 2 > 10 ? 'เกิน 10 แล้ว' : 'ยังน้อยกว่า 10' }}</p>
+...
+```
