@@ -10,6 +10,9 @@ $git clone https://github.com/l0oktaan/VueJS.git
 
 ```sh
 $git remote add origin https://github.com/l0oktaan/VueJS.git
+$git remote -v
+origin  https://github.com/l0oktaan/VueJS.git (fetch)
+origin  https://github.com/l0oktaan/VueJS.git (push)
 ```
 
 #add files to track
