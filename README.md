@@ -26,10 +26,15 @@ $git commit -m "message"
 ```
 
 #Output RAW HTML
-*in vue mylink = "<a href='http://www.google.com'>Google</a>"
+
 ```HTML
+...
 <p v-html="mylink"></p> 
 ```
+```js
+...
+mylink = "<a href='http://www.google.com'>Google</a>"
+```
 Output
-Google
+<a href='http://www.google.com'>Google</a>
 
