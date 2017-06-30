@@ -56,3 +56,13 @@ this.y = e.clientY;
 }
 ...
 ```
+#Passing arguments with Events
+```
+...
+<button v-on:click="increase(2, $event)">click me</button>
+...
+increase : function(step, e){
+    this.count += step;
+}
+...
+```
