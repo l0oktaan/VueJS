@@ -176,3 +176,188 @@ new Vue({
 ```
 - v-on:click => @click
 - v-bind:href => :href
+
+#Dynamic CSS
+```
+...
+.demo{
+    width: 100px;
+    height: 100px;
+    background-color: gray;
+    display: inline-block;
+    margin: 10px;
+}
+.red{
+    background-color: red;
+}
+...
+<div 
+    class="demo" 
+    @click="attachRed = !attachRed"
+    :class="{red: attachRed}">
+</div>
+...
+new Vue({
+    el : '#app',
+    data : {
+        ...
+        attachRed : false,    
+        ...
+    },
+    computed : {
+        ...
+    },
+    watch : {
+        ...
+    },
+    methods : {    
+        ...          
+    }
+});
+```
+
+#Dynamic CSS with Object
+```
+...
+<div 
+    class="demo" 
+    @click="attachRed = !attachRed"
+    :class="divClasses">
+</div>
+...
+new Vue({
+    el : '#app',
+    data : {
+        ...
+        attachRed : false,    
+        ...
+    },
+    computed : {
+        ...
+        divClasses: function(){
+            return {
+                red: this.attachRed,
+                blue: !this.attachRed
+            }
+        }
+    },
+    watch : {
+        ...
+    },
+    methods : {    
+        ...          
+    }
+});
+```
+#Dynamic CSS with Name
+```
+...
+<div class="demo" :class="color"></div>
+<div class="demo" :class="[color, {red: attachRed}]"></div>
+<input type="text" v-model="color">
+...
+new Vue({
+    el : '#app',
+    data : {
+        ...
+        attachRed : false,
+        color: 'green'    
+        ...
+    },
+    computed : {
+        ...        
+    },
+    watch : {
+        ...
+    },
+    methods : {    
+        ...          
+    }
+});
+```
+#Dynamic CSS without class
+```
+...
+<div class="demo" :style="{backgroundColor: color}"></div>
+<div class="demo" :style="myStyle"></div>
+<div class="demo" :style="[myStyle, {height: width + 'px'}]"></div>
+<input type="text" v-model="color">
+<input type="text" v-model="width">
+...
+new Vue({
+    el : '#app',
+    data : {
+        ...
+        color: 'green',
+        width: 100   
+        ...
+    },
+    computed : {
+        ...
+        myStyle: function(){
+            return {
+                backgroundColor: this.color,
+                width: this.width + 'px'
+            };
+        }        
+    },
+    watch : {
+        ...
+    },
+    methods : {    
+        ...          
+    }
+});
+```
+#Condition Rendering with v-if
+```
+...
+<div id="app">
+    <p v-if="show">You can see me!</p>
+    <p v-else>Now you see me!</p>
+    <p>Do you also see me!</p>
+    <button @click="show = !show">Switch</button>
+</div>
+<script>
+new Vue({
+    el : '#app',
+    data : {
+        show: true
+    },
+    computed : {
+        
+    },
+    watch : {
+        
+    },
+    methods : {
+        
+    }
+});
+</script>
+...
+new Vue({
+    el : '#app',
+    data : {
+        ...
+        color: 'green',
+        width: 100   
+        ...
+    },
+    computed : {
+        ...
+        myStyle: function(){
+            return {
+                backgroundColor: this.color,
+                width: this.width + 'px'
+            };
+        }        
+    },
+    watch : {
+        ...
+    },
+    methods : {    
+        ...          
+    }
+});
+```

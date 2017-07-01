@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue"></script>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="app">
+        <p v-if="show">You can see me!</p>
+        <p v-else>Now you see me!</p>
+        <template v-if="show">
+            <h1>This Template</h1>
+            <p>Inside a template</p>
+        </template>
+        <p v-show="show">Do you also see me!</p>
+        <button @click="show = !show">Switch</button>
+        <br>
+        <ul>
+            <li v-for="(ingredient, index) in ingredients" :key="ingredient">({{ index + 1 }}) {{ ingredient }}</li>
+        </ul>
+        <button @click="ingredients.push('orange')">Add New</button>
+        <template v-for="(ingredient, index) in ingredients">
+            <h3>{{ ingredient }}</h3>
+            <p>{{ order+1 }}</p>
+        </template>
+        <ul>
+            <li v-for="(person, index) in persons">
+                {{index}}
+                <div v-for="(value, key, index) in person">{{ key }}:{{ value }}</div>
+            </li>
+        </ul>
+        <span v-for="n in 10">{{n}},</span>
+        
+    </div>
+    <script>
+    new Vue({
+        el : '#app',
+        data : {
+            show: true,
+            ingredients: ['meat','fruit','cookies'],
+            persons:[
+                {name: 'Max', age: 27, color: 'red'},
+                {name: 'Anna', age: 'unknown', color: 'blue'}
+            ]
+        },
+        computed : {
+            
+        },
+        watch : {
+            
+        },
+        methods : {
+            
+        }
+    });
+    </script>
+</body>
+</html>
