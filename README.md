@@ -361,3 +361,13 @@ new Vue({
     }
 });
 ```
+
+#Install vue_cli
+```
+$npm install -g vue-cli
+...
+$vue init webpack-simple#1.0 vue-cli
+
+$cd vue-cli
+$npm install
+$npm run dev
